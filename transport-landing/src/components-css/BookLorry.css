@@ -1,0 +1,100 @@
+.book-lorry-page {
+  font-family: Arial, sans-serif;
+}
+
+/* Hero Section */
+.book-hero {
+  background: url('image') center/cover no-repeat;
+  color: white;
+  text-align: center;
+  padding: 120px 20px;
+}
+
+.book-hero h1 {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.book-hero p {
+  font-size: 20px;
+}
+
+/* Cards Section */
+.booking-cards {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 60px 20px;
+}
+
+.card {
+  background: #f8f8f8;
+  border-radius: 12px;
+  overflow: hidden;
+  width: 300px;
+  text-align: center;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.card h3 {
+  margin: 15px 0 10px;
+}
+
+.card p {
+  padding: 0 15px 20px;
+  color: #555;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* Booking Form Card */
+.booking-form-card {
+  max-width: 500px;
+  margin: 60px auto;
+  padding: 40px;
+  background: #f0f4f8;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+.booking-form-card h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.booking-form-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.booking-form-card input,
+.booking-form-card select,
+.booking-form-card button {
+  padding: 12px 15px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.booking-form-card button {
+  background: #1e293b;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.booking-form-card button:hover {
+  background: #374151;
+}
