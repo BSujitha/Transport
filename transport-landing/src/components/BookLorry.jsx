@@ -1,5 +1,9 @@
 import React from "react";
 import '../components-css/BookLorry.css';
+import smallLorry from "../assets/small-lorry.png";
+import mediumLorry from "../assets/medium-lorry.png";
+import largeLorry from "../assets/large-lorry.png";
+
 
 function BookLorry() {
   return (
@@ -13,17 +17,17 @@ function BookLorry() {
       {/* Booking Options Cards */}
       <div className="booking-cards">
         <div className="card">
-          <img src="image" alt="Small Lorry"/>
+          <img src={smallLorry} alt="Small Lorry"/>
           <h3>Small Lorry</h3>
           <p>Perfect for light transport and small deliveries.</p>
         </div>
         <div className="card">
-          <img src="image" alt="Medium Lorry"/>
+          <img src={mediumLorry} alt="Medium Lorry"/>
           <h3>Medium Lorry</h3>
           <p>Ideal for medium-scale deliveries.</p>
         </div>
         <div className="card">
-          <img src="image" alt="Large Lorry"/>
+          <img src={largeLorry} alt="Large Lorry"/>
           <h3>Large Lorry</h3>
           <p>For bulk transport and large orders.</p>
         </div>
@@ -35,6 +39,7 @@ function BookLorry() {
         <form>
           <input type="text" placeholder="Full Name" required />
           <input type="email" placeholder="Email Address" required />
+          <input type="tel" placeholder="+91 9876543210" />
           <input type="text" placeholder="Purpose / Details" required />
           <select>
             <option>Select Lorry Type</option>

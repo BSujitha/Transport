@@ -5,7 +5,7 @@
 /* Hero Section */
 .book-hero {
   background: url('image') center/cover no-repeat;
-  color: white;
+  color: black;
   text-align: center;
   padding: 120px 20px;
 }
@@ -29,7 +29,7 @@
 }
 
 .card {
-  background: #f8f8f8;
+  background:#f1ecec;
   border-radius: 12px;
   overflow: hidden;
   width: 300px;
@@ -98,3 +98,12 @@
 .booking-form-card button:hover {
   background: #374151;
 }
+.success-message {
+  background: #e6fffa;
+  color: #065f46;
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+

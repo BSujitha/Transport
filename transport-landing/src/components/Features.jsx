@@ -1,22 +1,29 @@
 import React from "react";
-import '../components-css/Features.css';
+import "../components-css/Features.css";
+
 
 function Features() {
   return (
     <section className="features" id="features">
-      <h2>Why Choose Our Lorry Service?</h2>
-      <div className="features-cards">
+      <h2 className="features-title">Why Choose Us</h2>
+
+      <div className="features-container">
         <div className="feature-card">
-          <h3>Easy Online Booking</h3>
-          <p>Book your lorry in just a few clicks without any hassle.</p>
+          
+          <h3>Multiple Lorry Options</h3>
+          <p>Small, medium and large lorries for every need.</p>
         </div>
+
         <div className="feature-card">
-          <h3>Safe & Reliable</h3>
-          <p>All our lorries are well-maintained and driven by experienced drivers.</p>
+          
+          <h3>Fast Delivery</h3>
+          <p>On-time pickup and delivery guaranteed.</p>
         </div>
+
         <div className="feature-card">
-          <h3>Flexible Scheduling</h3>
-          <p>Book lorries for multiple purposes and at your preferred time.</p>
+          
+          <h3>Safe & Secure</h3>
+          <p>Your goods are handled with care.</p>
         </div>
       </div>
     </section>

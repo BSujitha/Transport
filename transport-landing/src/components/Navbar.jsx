@@ -1,21 +1,30 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../components-css/Navbar.css";
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
-  const handleLinkClick = () => setMenuOpen(false);
+  const goToSection = (id) => {
+    setMenuOpen(false);
+    navigate("/");
+
+    setTimeout(() => {
+      const section = document.getElementById(id);
+      section?.scrollIntoView({ behavior: "smooth" });
+    }, 100);
+  };
 
   return (
     <nav className="navbar">
       <div className="logo">ABC Transport</div>
 
       <div className={`nav-links ${menuOpen ? "active" : ""}`}>
-        <Link to="/" onClick={handleLinkClick}>Home</Link>
-        <a href="#features" onClick={handleLinkClick}>Features</a>
-        <Link to="/book-lorry" onClick={handleLinkClick}>Book Lorry</Link>
-        <a href="#contact" onClick={handleLinkClick}>Contact</a>
+        <span onClick={() => { navigate("/"); setMenuOpen(false); }}>Home</span>
+        <span onClick={() => goToSection("features")}>Features</span>
+        <span onClick={() => navigate("/book-lorry")}>Book Lorry</span>
+        <span onClick={() => goToSection("contact")}>Contact</span>
       </div>
 
       <div className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
