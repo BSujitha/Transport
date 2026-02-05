@@ -1,101 +1,156 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
+import smallLorry from "../assets/small-lorry.jpg";
+import mediumLorry from "../assets/medium-lorry.jpg";
+import largeLorry from "../assets/large-lorry.jpg";
 import "../components-css/BookLorry.css";
-import smallLorry from "../assets/small-lorry.png";
-import mediumLorry from "../assets/medium-lorry.png";
-import largeLorry from "../assets/large-lorry.png";
 
 function BookLorry() {
   const [success, setSuccess] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    purpose: "",
-    lorry: ""
+    name: "", email: "", phone: "", purpose: "", lorry: ""
   });
+  const [errors, setErrors] = useState({});
+  const lorryRef = useRef(null);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    if (errors[e.target.name]) setErrors({ ...errors, [e.target.name]: "" });
+  };
+
+  useEffect(() => {
+    const cards = lorryRef.current?.querySelectorAll('.lorry-card');
+    cards?.forEach((card, index) => {
+      card.onclick = () => {
+        const types = ['small', 'medium', 'large'];
+        setFormData(prev => ({...prev, lorry: types[index]}));
+        card.style.transform = 'scale(0.97)';
+        setTimeout(() => { card.style.transform = ''; }, 200);
+      };
+    });
+  }, []);
+
+  const validateForm = () => {
+    const newErrors = {};
+    if (!formData.name.trim()) newErrors.name = "Name required";
+    if (!formData.email.trim() || !/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = "Valid email required";
+    if (!formData.phone.trim() || !/^\d{10}$/.test(formData.phone.replace(/\D/g, ''))) newErrors.phone = "10-digit phone required";
+    if (!formData.purpose.trim()) newErrors.purpose = "Purpose required";
+    if (!formData.lorry) newErrors.lorry = "Select lorry type";
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setSuccess(true);
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      purpose: "",
-      lorry: ""
-    });
-    setTimeout(() => setSuccess(false), 3000);
+    if (validateForm()) {
+      setLoading(true);
+      console.log("🚚 BOOKING DATA:", formData);
+      setTimeout(() => {
+        setSuccess(true);
+        setFormData({ name: "", email: "", phone: "", purpose: "", lorry: "" });
+        setLoading(false);
+        setTimeout(() => setSuccess(false), 4000);
+      }, 1500);
+    }
   };
 
   return (
-    <div className="book-lorry-page">
-      {/* Hero */}
-      <div className="book-hero">
-        <h1>Book Your Lorry</h1>
-        <p>Flexible, reliable transport for your needs</p>
-      </div>
-
-      {/* Cards */}
-      <div className="booking-cards">
-        <div className="card">
-          <img src={smallLorry} alt="Small Lorry" />
-          <h3>Small Lorry</h3>
-          <p>Perfect for small deliveries.</p>
+    <section className="book-lorry-section" id="book-lorry">
+      <div className="book-lorry-container">
+        <div className="book-hero">
+          <h1>Book Your Lorry Now</h1>
+          <p>Available fleet during hostel delivery off-hours</p>
         </div>
 
-        <div className="card">
-          <img src={mediumLorry} alt="Medium Lorry" />
-          <h3>Medium Lorry</h3>
-          <p>Ideal for medium-sized transport.</p>
-        </div>
-
-        <div className="card">
-          <img src={largeLorry} alt="Large Lorry" />
-          <h3>Large Lorry</h3>
-          <p>Best for heavy and bulk goods.</p>
-        </div>
-      </div>
-
-      {/* Form */}
-      <div className="booking-form-card">
-        <h2>Book Your Lorry Now</h2>
-
-        {success && (
-          <div className="success-message">
-            ✅ Booking Successful! We will contact you soon.
+        <div className="lorry-types" ref={lorryRef}>
+          <div className="lorry-card">
+            <img src={smallLorry} alt="Small Lorry" className="lorry-image" />
+            <h3>Small Lorry</h3>
+            <div className="card-text">
+              <p>Up to 1 ton capacity</p>
+              <p>Perfect for small loads</p>
+            </div>
           </div>
-        )}
 
-        <form onSubmit={handleSubmit}>
-          <input type="text" name="name" placeholder="Full Name"
-            value={formData.name} onChange={handleChange} required />
+          <div className="lorry-card">
+            <img src={mediumLorry} alt="Medium Lorry" className="lorry-image" />
+            <h3>Medium Lorry</h3>
+            <div className="card-text">
+              <p>Up to 3 tons capacity</p>
+              <p>Ideal for medium loads</p>
+            </div>
+          </div>
 
-          <input type="email" name="email" placeholder="Email Address"
-            value={formData.email} onChange={handleChange} required />
+          <div className="lorry-card">
+            <img src={largeLorry} alt="Large Lorry" className="lorry-image" />
+            <h3>Large Lorry</h3>
+            <div className="card-text">
+              <p>Up to 7 tons capacity</p>
+              <p>Heavy duty bulk goods</p>
+            </div>
+          </div>
+        </div>
 
-          <input type="tel" name="phone" placeholder="Mobile Number"
-            value={formData.phone} onChange={handleChange}
-            pattern="[0-9]{10}" required />
+        <div className="booking-form-section">
+          <div className="booking-form-card">
+            <h2>Complete Your Booking</h2>
+            
+            {success && (
+              <div className="success-message">
+                ✅ Booking confirmed! Contacting you in 30 mins.
+              </div>
+            )}
 
-          <input type="text" name="purpose" placeholder="Purpose / Details"
-            value={formData.purpose} onChange={handleChange} required />
+            <form onSubmit={handleSubmit} noValidate>
+              <div className="form-group">
+                <input type="text" name="name" placeholder="Full Name *" 
+                  value={formData.name} onChange={handleChange} 
+                  className={errors.name ? "error" : ""} />
+                {errors.name && <span className="error-text">{errors.name}</span>}
+              </div>
 
-          <select name="lorry" value={formData.lorry}
-            onChange={handleChange} required>
-            <option value="">Select Lorry Type</option>
-            <option>Small</option>
-            <option>Medium</option>
-            <option>Large</option>
-          </select>
+              <div className="form-row">
+                <div className="form-group">
+                  <input type="email" name="email" placeholder="Email *" 
+                    value={formData.email} onChange={handleChange} 
+                    className={errors.email ? "error" : ""} />
+                  {errors.email && <span className="error-text">{errors.email}</span>}
+                </div>
+                <div className="form-group">
+                  <input type="tel" name="phone" placeholder="Phone *" 
+                    value={formData.phone} onChange={handleChange} 
+                    className={errors.phone ? "error" : ""} maxLength="10" />
+                  {errors.phone && <span className="error-text">{errors.phone}</span>}
+                </div>
+              </div>
 
-          <button type="submit">Book Now</button>
-        </form>
+              <div className="form-group">
+                <input type="text" name="purpose" placeholder="Purpose * (furniture, materials)" 
+                  value={formData.purpose} onChange={handleChange} 
+                  className={errors.purpose ? "error" : ""} />
+                {errors.purpose && <span className="error-text">{errors.purpose}</span>}
+              </div>
+
+              <div className="form-group">
+                <select name="lorry" value={formData.lorry} onChange={handleChange} 
+                  className={errors.lorry ? "error" : ""}>
+                  <option value="">Select Lorry Type *</option>
+                  <option value="small">Small Lorry</option>
+                  <option value="medium">Medium Lorry</option>
+                  <option value="large">Large Lorry</option>
+                </select>
+                {errors.lorry && <span className="error-text">{errors.lorry}</span>}
+              </div>
+
+              <button type="submit" className="submit-btn" disabled={success || loading}>
+                {loading ? "🚚 Booking..." : success ? "✅ Confirmed!" : "Book Now →"}
+              </button>
+            </form>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
   );
 }
 

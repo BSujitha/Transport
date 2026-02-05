@@ -1,20 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, sans-serif;
+}
+
+*:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 70px; /* Navbar offset */
 }
 
 body {
-  background-color: #f9f9f9;
-  color: #1e293b;
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
-}
-html {
-  scroll-behavior: smooth;
+/* Performance */
+img {
+  max-width: 100%;
+  height: auto;
 }
 
+/* Selection */
+::selection {
+  background: #3b82f6;
+  color: white;
+}
+
+/* Scrollbar (modern browsers) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(#3b82f6, #1e40af);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(#1e40af, #3b82f6);
+}
+
+/* Custom cursor */
+.navbar .logo,
+.lorry-card,
+.carousel-btn,
+.nav-links span,
+.submit-btn {
+  cursor: pointer;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  :focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
+  }
+}
+
+/* Print styles */
+@media print {
+  .navbar,
+  .footer {
+    display: none !important;
+  }
+  
+  .hero,
+  .about,
+  .book-lorry-section,
+  .contact-section {
+    break-inside: avoid;
+  }
+}

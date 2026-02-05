@@ -1,24 +1,46 @@
+import React from "react";
 import "../components-css/Contact.css";
 
 function Contact() {
   return (
     <section className="contact-section" id="contact">
-      <h2 className="contact-title">Get in Touch</h2>
-
-      <div className="contact-cards">
-        <div className="contact-card">
-          <h3>Email</h3>
-          <p>support@transport.com</p>
+      <div className="contact-container">
+        {/* HEADER */}
+        <div className="contact-header">
+          <h1>Contact</h1>
+          <p>Ready to book? We're local and available 24/7</p>
         </div>
 
-        <div className="contact-card">
-          <h3>Phone</h3>
-          <p>+91 98765 43210</p>
-        </div>
+        {/* 3 SIMPLE CARDS */}
+        <div className="contact-cards">
+          {/* LOCATION CARD */}
+          <div className="contact-card location-card">
+            <div className="card-icon">📍</div>
+            <div className="card-content">
+              <h3>Our Location</h3>
+              <p>207/13,14 Vengalur Vilathoor Joint Road<br/>Paramakudi, Ramanathapuram, Tamil Nadu - 623 608</p>
+            </div>
+          </div>
 
-        <div className="contact-card">
-          <h3>Location</h3>
-          <p>Bangalore, India</p>
+          {/* PHONE CARD */}
+          <div className="contact-card phone-card">
+            <div className="card-icon">📞</div>
+            <div className="card-content">
+              <h3>+91 98765 43210</h3>
+              <p>24/7 Booking Support</p>
+              <a href="tel:+919876543210" className="card-link">Call Now</a>
+            </div>
+          </div>
+
+          {/* EMAIL CARD */}
+          <div className="contact-card email-card">
+            <div className="card-icon">✉️</div>
+            <div className="card-content">
+              <h3>book@abc-transport.in</h3>
+              <p>Response within 2 hours</p>
+              <a href="mailto:book@abc-transport.in" className="card-link">Send Email</a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
