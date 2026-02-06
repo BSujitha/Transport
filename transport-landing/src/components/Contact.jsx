@@ -5,15 +5,15 @@ function Contact() {
   return (
     <section className="contact-section" id="contact">
       <div className="contact-container">
-        {/* HEADER */}
+        
         <div className="contact-header">
           <h1>Contact</h1>
           <p>Ready to book? We're local and available 24/7</p>
         </div>
 
-        {/* 3 SIMPLE CARDS */}
+        
         <div className="contact-cards">
-          {/* LOCATION CARD */}
+          
           <div className="contact-card location-card">
             <div className="card-icon">📍</div>
             <div className="card-content">
@@ -22,7 +22,7 @@ function Contact() {
             </div>
           </div>
 
-          {/* PHONE CARD */}
+          
           <div className="contact-card phone-card">
             <div className="card-icon">📞</div>
             <div className="card-content">
@@ -32,11 +32,11 @@ function Contact() {
             </div>
           </div>
 
-          {/* EMAIL CARD */}
+          
           <div className="contact-card email-card">
             <div className="card-icon">✉️</div>
             <div className="card-content">
-              <h3>book@abc-transport.in</h3>
+              <h3>book@yoyo-transport.in</h3>
               <p>Response within 2 hours</p>
               <a href="mailto:book@abc-transport.in" className="card-link">Send Email</a>
             </div>

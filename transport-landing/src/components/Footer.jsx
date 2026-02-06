@@ -7,7 +7,7 @@ function Footer() {
       <div className="footer-container">
         
         <div className="footer-brand">
-          <div className="footer-logo">ABC Transport</div>
+          <div className="footer-logo">YoYo Transport</div>
           <p>Fast • Reliable • Affordable</p>
           <div className="brand-address">
             📍 207/13,14 Vengalur Vilathoor Joint Road<br/>
@@ -16,7 +16,7 @@ function Footer() {
           </div>
           <div className="brand-contact">
             <span>📞 +91 98765 43210</span>
-            <span>✉️ book@abc-transport.in</span>
+            <span>✉️ book@yoyo-transport.in</span>
           </div>
         </div>
 
@@ -43,13 +43,15 @@ function Footer() {
 
       
       <div className="footer-bottom">
-        <p>&copy; 2026 ABC Transport. All rights reserved. | Serving Tamil Nadu</p>
-        <div className="footer-legal">
-          <a href="#privacy">Privacy</a>
-          <a href="#terms">Terms</a>
-          <a href="tel:+919876543210">Emergency</a>
-        </div>
-      </div>
+            <p>&copy; 2026 YoYo Transport. All rights reserved. | Serving Tamil Nadu</p>
+ <          div className="footer-legal">
+           <a href="/privacy-policy" className="footer-link">Privacy</a> |
+          <a href="/terms-conditions" className="footer-link">Terms</a>
+</div>
+
+
+</div>
+
     </footer>
   );
 }
