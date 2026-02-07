@@ -11,18 +11,8 @@ function Contact() {
           <p>Ready to book? We're local and available 24/7</p>
         </div>
 
-        
+        {/* 3 CARDS IN ONE HORIZONTAL LINE - INLINE STYLES */}
         <div className="contact-cards">
-          
-          <div className="contact-card location-card">
-            <div className="card-icon">📍</div>
-            <div className="card-content">
-              <h3>Our Location</h3>
-              <p>207/13,14 Vengalur Vilathoor Joint Road<br/>Paramakudi, Ramanathapuram, Tamil Nadu - 623 608</p>
-            </div>
-          </div>
-
-          
           <div className="contact-card phone-card">
             <div className="card-icon">📞</div>
             <div className="card-content">
@@ -32,13 +22,20 @@ function Contact() {
             </div>
           </div>
 
-          
           <div className="contact-card email-card">
             <div className="card-icon">✉️</div>
             <div className="card-content">
               <h3>book@yoyo-transport.in</h3>
               <p>Response within 2 hours</p>
-              <a href="mailto:book@abc-transport.in" className="card-link">Send Email</a>
+              <a href="mailto:book@yoyo-transport.in" className="card-link">Send Email</a>
+            </div>
+          </div>
+
+          <div className="contact-card location-card">
+            <div className="card-icon">📍</div>
+            <div className="card-content">
+              <h3>Our Location</h3>
+              <p>207/13,14 Vengalur Vilathoor Joint Road<br/>Paramakudi, Ramanathapuram, Tamil Nadu - 623 608</p>
             </div>
           </div>
         </div>

@@ -1,10 +1,11 @@
+/* ================= CONTACT SECTION ================= */
 .contact-section {
   padding: 5rem 2rem;
   background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
 }
 
 .contact-container {
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -15,7 +16,7 @@
 
 .contact-header h1 {
   font-family: 'Poppins', sans-serif;
-  font-size: clamp(2.5rem, 4.5vw, 3.5rem);
+  font-size: clamp(2.4rem, 4.4vw, 3.4rem);
   font-weight: 700;
   background: linear-gradient(135deg, #3b82f6, #1e40af);
   -webkit-background-clip: text;
@@ -31,11 +32,15 @@
   margin: 0 auto;
 }
 
-/* CARDS GRID */
+/* BASE LAYOUT */
 .contact-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 1.5rem;
+  justify-content: center;
+  padding: 0 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 /* SINGLE CARD */
@@ -49,6 +54,10 @@
   display: flex;
   gap: 1rem;
   align-items: flex-start;
+  width: auto;
+  box-sizing: border-box;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .contact-card:hover {
@@ -56,6 +65,7 @@
   box-shadow: 0 20px 60px rgba(59, 130, 246, 0.15);
 }
 
+/* CARD ICONS */
 .card-icon {
   font-size: 2.5rem;
   flex-shrink: 0;
@@ -69,11 +79,6 @@
   margin-top: 0.25rem;
 }
 
-.location-card .card-icon {
-  background: linear-gradient(135deg, #10b981, #059669);
-  color: white;
-}
-
 .phone-card .card-icon {
   background: linear-gradient(135deg, #3b82f6, #1e40af);
   color: white;
@@ -84,8 +89,18 @@
   color: white;
 }
 
+.location-card .card-icon {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+}
+
+/* CARD CONTENT */
 .card-content {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
 }
 
 .card-content h3 {
@@ -101,6 +116,10 @@
   margin-bottom: 1rem;
   line-height: 1.6;
   font-size: 0.95rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .card-link {
@@ -121,24 +140,164 @@
   transform: translateY(-2px);
 }
 
-/* RESPONSIVE */
-@media (max-width: 768px) {
-  .contact-section {
-    padding: 3rem 1.5rem;
-  }
+
+@media (min-width: 769px) and (max-width: 1024px) {
   
   .contact-cards {
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr)); /* 3 cards, equal width */
+    gap: 1.2rem;
+    grid-auto-rows: 1fr;  /* all cards same height */
+    max-width: 100%;
+    margin: 0 auto;
   }
-  
+
   .contact-card {
-    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* stretch content top-to-bottom */
+    min-width: 0;         /* allow content to shrink */
+    height: 100%;         /* match grid row height */
+    padding: 1.5rem;      /* reduce padding to fit */
+    box-sizing: border-box;
+    word-break: break-word;
+  }
+
+  .card-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 2rem;      /* smaller than desktop */
+  }
+
+  .card-content h3 {
+    font-size: 1.1rem;
+  }
+
+  .card-content p {
+    font-size: 0.9rem;
+    line-height: 1.3;
+    overflow: visible;    /* show full text */
+  }
+
+  .card-link {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.8rem;
   }
 }
 
+@media (max-width: 768px) {
+  /* Contact cards grid */
+  .contact-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 cards in first row */
+    gap: 1rem;
+    grid-auto-rows: 1fr;   /* all cards same height */
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  /* Individual card */
+  .contact-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;  /* stretch content */
+    padding: 1rem;
+    box-sizing: border-box;
+    min-width: 0;         /* allow content to shrink */
+    height: 100%;         /* match grid row height */
+    word-break: break-word;
+  }
+
+  /* Third card centered under first two */
+  .contact-card:last-child {
+    grid-column: 1 / -1;  /* span both columns */
+    justify-self: center;
+    width: 90%;            /* visually aligned */
+  }
+
+  /* Icons smaller */
+  .card-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.6rem;
+  }
+
+  /* Headings and text */
+  .card-content h3 {
+    font-size: 1rem;
+    word-break: break-word;
+  }
+
+  .card-content p {
+    font-size: 0.85rem;
+    line-height: 1.3;
+    overflow: visible;    /* show full text */
+  }
+
+  /* Links/buttons */
+  .card-link {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.8rem;
+  }
+}
+
+
+
+
+ 
 @media (max-width: 480px) {
-  .contact-header h1 {
-    font-size: 2.25rem !important;
+
+  .contact-section {
+    padding: 1.5rem 1rem;
+  }
+
+  /* Grid for mobile: 2 cards in first row */
+  .contact-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+    margin: 0 auto;
+    max-width: 100%; /* allow full width */
+  }
+
+  .contact-card {
+    flex: 1 1 auto;        /* allow cards to expand */
+    min-width: 0;
+    padding: 1rem;
+    box-sizing: border-box;
+    height: auto;
+    word-break: break-word; /* wrap long text */
+  }
+
+  /* Center the third card */
+  .contact-card:last-child {
+    grid-column: 1 / -1;   /* span both columns */
+    justify-self: center;   /* center it */
+    width: 90%;             /* allow it to be wide enough */
+    max-width: none;        /* remove width limit */
+  }
+
+  .card-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+  }
+
+  .card-content h3 {
+    font-size: 1rem;
+    word-break: break-word;
+  }
+
+  .card-content p {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    display: block;          /* show full content */
+    overflow: visible;       /* allow full content */
+    -webkit-line-clamp: unset;
+  }
+
+  .card-link {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.8rem;
   }
 }
